@@ -1,0 +1,503 @@
+ChatGPT ha detto:
+Perfetto. Procediamo. Ti do una prima versione completa e funzionante del catalogo. Dopo averla pubblicata, possiamo migliorarne grafica e gestione dei prodotti.
+
+Passo 4 — Incolla questo codice
+Nella grande area bianca del file index.html, incolla tutto il codice seguente.
+
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Il mio catalogo</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f7f4f0;
+            color: #333;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 20px 25px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 34px;
+        }
+
+        header p {
+            color: #777;
+            font-size: 17px;
+        }
+
+        .catalogo {
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .prodotto {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            padding-bottom: 20px;
+        }
+
+        .foto-prodotto {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .contenuto {
+            padding: 20px;
+        }
+
+        .prodotto h2 {
+            margin-top: 0;
+            font-size: 22px;
+        }
+
+        .descrizione {
+            color: #666;
+            line-height: 1.5;
+            min-height: 50px;
+        }
+
+        .prezzo {
+            font-size: 21px;
+            font-weight: bold;
+            margin: 15px 0;
+        }
+
+        .timer {
+            margin: 20px 0;
+            padding: 13px;
+            text-align: center;
+            background: #f3eee8;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .timer.scaduto {
+            background: #f2dede;
+            color: #a94442;
+        }
+
+        .etsy {
+            display: block;
+            width: 100%;
+            padding: 14px;
+            border-radius: 7px;
+            background: #f1641e;
+            color: white;
+            text-decoration: none;
+            text-align: center;
+            font-weight: bold;
+            border: none;
+        }
+
+        .etsy:hover {
+            background: #d95312;
+        }
+
+        .etsy.disabilitato {
+            background: #999;
+            color: white;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+
+        @media (max-width: 900px) {
+
+            .catalogo {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+        }
+
+        @media (max-width: 600px) {
+
+            .catalogo {
+                grid-template-columns: 1fr;
+                padding: 15px;
+            }
+
+            .foto-prodotto {
+                height: 300px;
+            }
+
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+<header>
+
+    <h1>Il mio catalogo</h1>
+
+    <p>Scopri i nostri prodotti</p>
+
+</header>
+
+
+<main class="catalogo">
+
+
+    <!-- ============================= -->
+    <!-- PRODOTTO 1 -->
+    <!-- ============================= -->
+
+    <article class="prodotto">
+
+        <img
+            class="foto-prodotto"
+            src="https://via.placeholder.com/600x600?text=Prodotto+1"
+            alt="Prodotto 1"
+        >
+
+        <div class="contenuto">
+
+            <h2>Prodotto 1</h2>
+
+            <p class="descrizione">
+                Inserisci qui la descrizione del prodotto.
+            </p>
+
+            <div class="prezzo">
+                € 00,00
+            </div>
+
+            <div
+                class="timer"
+                data-giorni="30"
+            >
+                Calcolo disponibilità...
+            </div>
+
+            <a
+                class="etsy"
+                href="https://www.etsy.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                ACQUISTA SU ETSY
+            </a>
+
+        </div>
+
+    </article>
+
+
+    <!-- ============================= -->
+    <!-- PRODOTTO 2 -->
+    <!-- ============================= -->
+
+    <article class="prodotto">
+
+        <img
+            class="foto-prodotto"
+            src="https://via.placeholder.com/600x600?text=Prodotto+2"
+            alt="Prodotto 2"
+        >
+
+        <div class="contenuto">
+
+            <h2>Prodotto 2</h2>
+
+            <p class="descrizione">
+                Inserisci qui la descrizione del prodotto.
+            </p>
+
+            <div class="prezzo">
+                € 00,00
+            </div>
+
+            <div
+                class="timer"
+                data-giorni="30"
+            >
+                Calcolo disponibilità...
+            </div>
+
+            <a
+                class="etsy"
+                href="https://www.etsy.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                ACQUISTA SU ETSY
+            </a>
+
+        </div>
+
+    </article>
+
+
+    <!-- ============================= -->
+    <!-- PRODOTTO 3 -->
+    <!-- ============================= -->
+
+    <article class="prodotto">
+
+        <img
+            class="foto-prodotto"
+            src="https://via.placeholder.com/600x600?text=Prodotto+3"
+            alt="Prodotto 3"
+        >
+
+        <div class="contenuto">
+
+            <h2>Prodotto 3</h2>
+
+            <p class="descrizione">
+                Inserisci qui la descrizione del prodotto.
+            </p>
+
+            <div class="prezzo">
+                € 00,00
+            </div>
+
+            <div
+                class="timer"
+                data-giorni="30"
+            >
+                Calcolo disponibilità...
+            </div>
+
+            <a
+                class="etsy"
+                href="https://www.etsy.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                ACQUISTA SU ETSY
+            </a>
+
+        </div>
+
+    </article>
+
+
+</main>
+
+
+<script>
+
+    /*
+     * TIMER DEI PRODOTTI
+     *
+     * Ogni prodotto parte da 30 giorni.
+     *
+     * IMPORTANTE:
+     * la data di partenza viene salvata nel browser.
+     */
+
+    const timerProdotti = document.querySelectorAll(".timer");
+
+
+    timerProdotti.forEach(function(timer, indice) {
+
+        const chiave =
+            "catalogo_prodotti_data_" + indice;
+
+        let dataInizio =
+            localStorage.getItem(chiave);
+
+
+        /*
+         * Se è la prima volta che viene aperta
+         * la pagina, memorizziamo la data di oggi.
+         */
+
+        if (!dataInizio) {
+
+            dataInizio =
+                new Date().getTime();
+
+            localStorage.setItem(
+                chiave,
+                dataInizio
+            );
+
+        }
+
+
+        timer.dataset.inizio =
+            dataInizio;
+
+    });
+
+
+    function aggiornaTimer() {
+
+        const adesso =
+            new Date().getTime();
+
+
+        timerProdotti.forEach(function(timer, indice) {
+
+            const inizio =
+                parseInt(timer.dataset.inizio);
+
+
+            /*
+             * 30 giorni esatti
+             */
+
+            const durata =
+                30 * 24 * 60 * 60 * 1000;
+
+
+            const scadenza =
+                inizio + durata;
+
+
+            const differenza =
+                scadenza - adesso;
+
+
+            const prodotto =
+                timer.closest(".prodotto");
+
+
+            const pulsante =
+                prodotto.querySelector(".etsy");
+
+
+            /*
+             * PRODOTTO SCADUTO
+             */
+
+            if (differenza <= 0) {
+
+                timer.innerHTML =
+                    "⛔ DISPONIBILITÀ TERMINATA";
+
+                timer.classList.add("scaduto");
+
+
+                pulsante.classList.add(
+                    "disabilitato"
+                );
+
+
+                pulsante.removeAttribute(
+                    "href"
+                );
+
+
+                pulsante.removeAttribute(
+                    "target"
+                );
+
+
+                pulsante.innerHTML =
+                    "NON PIÙ DISPONIBILE";
+
+
+                return;
+
+            }
+
+
+            /*
+             * CALCOLO GIORNI
+             */
+
+            const giorni =
+                Math.floor(
+                    differenza /
+                    (1000 * 60 * 60 * 24)
+                );
+
+
+            /*
+             * CALCOLO ORE
+             */
+
+            const ore =
+                Math.floor(
+                    (differenza /
+                    (1000 * 60 * 60)) % 24
+                );
+
+
+            /*
+             * CALCOLO MINUTI
+             */
+
+            const minuti =
+                Math.floor(
+                    (differenza /
+                    (1000 * 60)) % 60
+                );
+
+
+            /*
+             * CALCOLO SECONDI
+             */
+
+            const secondi =
+                Math.floor(
+                    (differenza / 1000) % 60
+                );
+
+
+            timer.innerHTML =
+                "Disponibile ancora per " +
+                giorni +
+                " giorni " +
+                ore +
+                " ore " +
+                minuti +
+                " minuti " +
+                secondi +
+                " secondi";
+
+        });
+
+    }
+
+
+    /*
+     * Aggiorna subito
+     */
+
+    aggiornaTimer();
+
+
+    /*
+     * Aggiorna ogni secondo
+     */
+
+    setInterval(
+        aggiornaTimer,
+        1000
+    );
+
+</script>
+
+
+</body>
+</html>
