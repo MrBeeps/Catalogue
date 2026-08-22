@@ -347,291 +347,183 @@ const DURATA_GIORNI = 30;
  FUNZIONE TIMER
 ==========================================================
 */
-
-
 function aggiornaCatalogo() {
 
-
-    const prodotti =
-        document.querySelectorAll(".prodotto");
-
-
-    const adesso =
-        new Date();
-
+    const prodotti = document.querySelectorAll(".prodotto");
+    const adesso = new Date();
 
     prodotti.forEach(function(prodotto) {
 
+        const dataInizioStringa = prodotto.dataset.inizio;
 
-        /*
-         * Recuperiamo la data di inizio
-         */
-
-        const dataInizioStringa =
-            prodotto.dataset.inizio;
-
-
-        /*
-         * Creiamo la data di inizio
-         *
-         * La data viene interpretata
-         * come mezzanotte.
-         */
-
-        const dataInizio =
-            new Date(
-                dataInizioStringa + "T00:00:00"
-            );
-
-
-        /*
-         * Data di fine:
-         *
-         * 30 giorni dopo la data di inizio.
-         */
-
-        const dataFine =
-            new Date(dataInizio);
-
-
-        dataFine.setDate(
-            dataFine.getDate() + DURATA_GIORNI
+        // La data di inizio è il GIORNO 30.
+        const dataInizio = new Date(
+            dataInizioStringa + "T00:00:00"
         );
 
-
         /*
-         * Troviamo gli elementi della scheda
+         * Giorno 0:
+         * è il 30° giorno dopo la data di inizio.
+         *
+         * Il giorno 0 resta attivo fino alle 23:59:59.
+         * Etsy viene disattivato alle 00:00 del giorno successivo.
          */
 
-        const timer =
-            prodotto.querySelector(".timer");
+        const inizioGiornoZero = new Date(dataInizio);
+        inizioGiornoZero.setDate(
+            inizioGiornoZero.getDate() + 30
+        );
 
+        const fineGiornoZero = new Date(inizioGiornoZero);
+        fineGiornoZero.setDate(
+            fineGiornoZero.getDate() + 1
+        );
 
-        const pulsante =
-            prodotto.querySelector(".etsy");
-
+        const timer = prodotto.querySelector(".timer");
+        const pulsante = prodotto.querySelector(".etsy");
 
         /*
-         ==================================================
-         PRIMA DELLA DATA DI INIZIO
-         ==================================================
-        */
-
+         * PRIMA DELLA DATA DI INIZIO
+         */
 
         if (adesso < dataInizio) {
 
+            const differenza =
+                dataInizio.getTime() - adesso.getTime();
+
+            const giorni = Math.ceil(
+                differenza / (1000 * 60 * 60 * 24)
+            );
 
             timer.innerHTML =
-                "NON ANCORA DISPONIBILE";
+                "NON ANCORA DISPONIBILE<br>" +
+                "Disponibile tra " +
+                giorni +
+                " giorni";
 
+            timer.classList.add("non-disponibile");
 
-            timer.classList.add(
-                "non-disponibile"
-            );
+            pulsante.classList.add("disabilitato");
 
-
-            pulsante.classList.add(
-                "disabilitato"
-            );
-
-
-            pulsante.removeAttribute(
-                "href"
-            );
-
-
-            pulsante.removeAttribute(
-                "target"
-            );
-
+            pulsante.removeAttribute("href");
+            pulsante.removeAttribute("target");
 
             pulsante.innerHTML =
                 "NON ANCORA DISPONIBILE";
 
-
             return;
-
         }
 
-
         /*
-         ==================================================
-         DATA DI FINE
-         ==================================================
-        */
-
-
-        /*
-         * Se siamo arrivati alla data di fine,
-         * l'offerta è terminata.
-         *
-         * La data di fine rappresenta esattamente
-         * il momento in cui termina il periodo
-         * di 30 giorni.
+         * DOPO LE 23:59:59 DEL GIORNO 0
          */
 
-
-        if (adesso >= dataFine) {
-
+        if (adesso >= fineGiornoZero) {
 
             timer.innerHTML =
                 "⛔ DISPONIBILITÀ TERMINATA";
 
+            timer.classList.remove("giorno-zero");
+            timer.classList.add("scaduto");
 
-            timer.classList.remove(
-                "giorno-zero"
-            );
+            pulsante.classList.add("disabilitato");
 
-
-            timer.classList.add(
-                "scaduto"
-            );
-
-
-            pulsante.classList.add(
-                "disabilitato"
-            );
-
-
-            pulsante.removeAttribute(
-                "href"
-            );
-
-
-            pulsante.removeAttribute(
-                "target"
-            );
-
+            pulsante.removeAttribute("href");
+            pulsante.removeAttribute("target");
 
             pulsante.innerHTML =
                 "NON PIÙ DISPONIBILE";
 
-
             return;
-
         }
 
+        /*
+         * CALCOLO DEL GIORNO
+         */
+
+        const differenzaInizio =
+            adesso.getTime() - dataInizio.getTime();
+
+        let giorniTrascorsi = Math.floor(
+            differenzaInizio /
+            (1000 * 60 * 60 * 24)
+        );
 
         /*
-         ==================================================
-         CALCOLO DEL TEMPO
-         ==================================================
-        */
+         * Giorno visualizzato:
+         *
+         * giorno 30 = data di inizio
+         * giorno 29 = giorno successivo
+         * ...
+         * giorno 0 = 30 giorni dopo
+         */
 
+        let giorno = 30 - giorniTrascorsi;
+
+        if (giorno < 0) {
+            giorno = 0;
+        }
+
+        /*
+         * TEMPO RIMANENTE
+         */
 
         const differenza =
-            dataFine.getTime() -
+            fineGiornoZero.getTime() -
             adesso.getTime();
 
+        const ore = Math.floor(
+            (differenza / (1000 * 60 * 60)) % 24
+        );
+
+        const minuti = Math.floor(
+            (differenza / (1000 * 60)) % 60
+        );
+
+        const secondi = Math.floor(
+            (differenza / 1000) % 60
+        );
 
         /*
-         * Giorni interi rimanenti
+         * GIORNO 0
          */
 
-        const giorni =
-            Math.floor(
-                differenza /
-                (1000 * 60 * 60 * 24)
-            );
+        if (giorno === 0) {
 
-
-        /*
-         * Ore
-         */
-
-        const ore =
-            Math.floor(
-                (differenza /
-                (1000 * 60 * 60)) % 24
-            );
-
-
-        /*
-         * Minuti
-         */
-
-        const minuti =
-            Math.floor(
-                (differenza /
-                (1000 * 60)) % 60
-            );
-
-
-        /*
-         * Secondi
-         */
-
-        const secondi =
-            Math.floor(
-                (differenza / 1000) % 60
-            );
-
-
-        /*
-         ==================================================
-         GIORNO ZERO
-         ==================================================
-        */
-
-
-        if (giorni === 0) {
-
-
-            timer.classList.add(
-                "giorno-zero"
-            );
-
+            timer.classList.add("giorno-zero");
 
             timer.innerHTML =
-                "⚠️ GIORNO 0 — " +
-                ore +
-                " ore " +
-                minuti +
-                " minuti " +
-                secondi +
-                " secondi";
-
+                "⚠️ GIORNO 0<br>" +
+                ore + " ore " +
+                minuti + " minuti " +
+                secondi + " secondi";
 
         } else {
 
-
-            timer.classList.remove(
-                "giorno-zero"
-            );
-
+            timer.classList.remove("giorno-zero");
 
             timer.innerHTML =
-                "Disponibile ancora per " +
-                giorni +
-                " giorni " +
+                "GIORNO " +
+                giorno +
+                "<br>" +
                 ore +
                 " ore " +
                 minuti +
                 " minuti " +
                 secondi +
                 " secondi";
-
         }
 
-
         /*
-         * Ci assicuriamo che il pulsante
-         * sia attivo durante il periodo valido.
+         * ETSY ATTIVO
          */
 
-        pulsante.classList.remove(
-            "disabilitato"
-        );
-
+        pulsante.classList.remove("disabilitato");
 
         pulsante.innerHTML =
             "ACQUISTA SU ETSY";
-
     });
-
 }
-
-
 /*
 ==========================================================
  AVVIO
