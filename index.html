@@ -10,15 +10,19 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-CV8ZHGCPHG"></script>
 
     <script>
+
         window.dataLayer = window.dataLayer || [];
 
         function gtag() {
+
             dataLayer.push(arguments);
+
         }
 
         gtag('js', new Date());
 
         gtag('config', 'G-CV8ZHGCPHG');
+
     </script>
 
 
@@ -33,18 +37,23 @@
     <title>Mr.Burn Catalogue</title>
 
 
+
     <!-- ================================================= -->
     <!-- STILE                                              -->
     <!-- ================================================= -->
 
     <style>
 
+
         * {
+
             box-sizing: border-box;
+
         }
 
 
         body {
+
             margin: 0;
 
             font-family: Arial, sans-serif;
@@ -52,7 +61,9 @@
             background: #f7f4f0;
 
             color: #333;
+
         }
+
 
 
         /* ================================================= */
@@ -60,24 +71,31 @@
         /* ================================================= */
 
         header {
+
             text-align: center;
 
             padding: 45px 20px 30px;
+
         }
 
 
         header h1 {
+
             margin: 0;
 
             font-size: 34px;
+
         }
 
 
         header p {
+
             color: #777;
 
             font-size: 17px;
+
         }
+
 
 
         /* ================================================= */
@@ -98,7 +116,9 @@
                 repeat(3, 1fr);
 
             gap: 25px;
+
         }
+
 
 
         /* ================================================= */
@@ -118,7 +138,9 @@
                 rgba(0,0,0,0.08);
 
             padding-bottom: 20px;
+
         }
+
 
 
         /* ================================================= */
@@ -134,7 +156,9 @@
             object-fit: cover;
 
             display: block;
+
         }
+
 
 
         /* ================================================= */
@@ -144,6 +168,7 @@
         .contenuto {
 
             padding: 20px;
+
         }
 
 
@@ -152,6 +177,7 @@
             margin-top: 0;
 
             font-size: 22px;
+
         }
 
 
@@ -160,7 +186,9 @@
             color: #666;
 
             line-height: 1.5;
+
         }
+
 
 
         /* ================================================= */
@@ -174,11 +202,13 @@
             font-weight: bold;
 
             margin: 15px 0;
+
         }
 
 
+
         /* ================================================= */
-        /* DATA                                                */
+        /* DATA                                               */
         /* ================================================= */
 
         .data {
@@ -188,7 +218,9 @@
             color: #888;
 
             margin-top: 10px;
+
         }
+
 
 
         /* ================================================= */
@@ -210,6 +242,7 @@
             font-weight: bold;
 
             font-size: 14px;
+
         }
 
 
@@ -218,6 +251,7 @@
             background: #fff3cd;
 
             color: #856404;
+
         }
 
 
@@ -226,6 +260,7 @@
             background: #f2dede;
 
             color: #a94442;
+
         }
 
 
@@ -234,52 +269,28 @@
             background: #eeeeee;
 
             color: #666;
+
         }
 
 
-        /* ================================================= */
-        /* AREA CONTATTI                                      */
-        /* ================================================= */
-
-        .contatti {
-
-            margin-top: 15px;
-        }
-
-
-        .titolo-contatti {
-
-            font-size: 14px;
-
-            font-weight: bold;
-
-            margin-bottom: 10px;
-
-            text-align: center;
-
-            color: #555;
-        }
-
 
         /* ================================================= */
-        /* PULSANTI CONTATTO                                   */
+        /* PULSANTE RICHIESTA                                 */
         /* ================================================= */
 
-        .pulsante-contatto {
+        .pulsante-richiesta {
 
             display: block;
 
             width: 100%;
 
-            padding: 14px;
-
-            margin-top: 8px;
+            padding: 15px;
 
             border-radius: 7px;
 
-            color: white;
+            background: #222;
 
-            text-decoration: none;
+            color: white;
 
             text-align: center;
 
@@ -289,32 +300,241 @@
 
             cursor: pointer;
 
+            font-size: 15px;
+
             transition:
                 background 0.2s ease,
                 transform 0.1s ease;
+
         }
 
 
-        .pulsante-contatto:hover {
+        .pulsante-richiesta:hover {
+
+            background: #444;
 
             transform: translateY(-1px);
+
         }
+
+
+        .pulsante-richiesta.disabilitato {
+
+            background: #999;
+
+            color: white;
+
+            cursor: not-allowed;
+
+            pointer-events: none;
+
+            transform: none;
+
+        }
+
 
 
         /* ================================================= */
-        /* E-MAIL                                             */
+        /* MODALE                                             */
         /* ================================================= */
 
-        .email {
+        .modal {
 
-            background: #333;
+            display: none;
+
+            position: fixed;
+
+            z-index: 1000;
+
+            left: 0;
+
+            top: 0;
+
+            width: 100%;
+
+            height: 100%;
+
+            background:
+                rgba(0,0,0,0.70);
+
+            padding: 20px;
+
         }
 
 
-        .email:hover {
+        .modal.attivo {
 
-            background: #111;
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
         }
+
+
+        .modal-contenuto {
+
+            position: relative;
+
+            width: 100%;
+
+            max-width: 480px;
+
+            background: white;
+
+            border-radius: 14px;
+
+            padding: 30px;
+
+            text-align: center;
+
+            box-shadow:
+                0 10px 40px
+                rgba(0,0,0,0.30);
+
+        }
+
+
+
+        /* ================================================= */
+        /* CHIUDI                                              */
+        /* ================================================= */
+
+        .chiudi {
+
+            position: absolute;
+
+            right: 18px;
+
+            top: 12px;
+
+            font-size: 30px;
+
+            color: #777;
+
+            background: none;
+
+            border: none;
+
+            cursor: pointer;
+
+        }
+
+
+        .chiudi:hover {
+
+            color: #111;
+
+        }
+
+
+
+        /* ================================================= */
+        /* TITOLO MODALE                                      */
+        /* ================================================= */
+
+        .modal h2 {
+
+            margin-top: 5px;
+
+            margin-bottom: 20px;
+
+            font-size: 25px;
+
+        }
+
+
+
+        /* ================================================= */
+        /* OPERA SELEZIONATA                                  */
+        /* ================================================= */
+
+        .opera-selezionata {
+
+            background: #f3eee8;
+
+            border-radius: 8px;
+
+            padding: 15px;
+
+            margin-bottom: 20px;
+
+            line-height: 1.6;
+
+        }
+
+
+        .nome-opera {
+
+            font-size: 19px;
+
+            font-weight: bold;
+
+        }
+
+
+        .prezzo-opera {
+
+            font-size: 16px;
+
+            color: #666;
+
+        }
+
+
+
+        /* ================================================= */
+        /* TESTO                                              */
+        /* ================================================= */
+
+        .testo-contatto {
+
+            color: #666;
+
+            line-height: 1.5;
+
+            margin-bottom: 20px;
+
+        }
+
+
+
+        /* ================================================= */
+        /* SOCIAL                                             */
+        /* ================================================= */
+
+        .social-modal {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 10px;
+
+        }
+
+
+        .social-modal a {
+
+            display: block;
+
+            width: 100%;
+
+            padding: 15px;
+
+            border-radius: 8px;
+
+            color: white;
+
+            text-decoration: none;
+
+            font-weight: bold;
+
+            font-size: 15px;
+
+        }
+
 
 
         /* ================================================= */
@@ -332,13 +552,16 @@
                     #cc2366,
                     #bc1888
                 );
+
         }
 
 
         .instagram:hover {
 
-            opacity: 0.9;
+            opacity: 0.90;
+
         }
+
 
 
         /* ================================================= */
@@ -348,31 +571,16 @@
         .tiktok {
 
             background: #000;
+
         }
 
 
         .tiktok:hover {
 
             background: #222;
+
         }
 
-
-        /* ================================================= */
-        /* PULSANTI DISABILITATI                              */
-        /* ================================================= */
-
-        .disabilitato {
-
-            background: #999 !important;
-
-            color: white !important;
-
-            cursor: not-allowed;
-
-            pointer-events: none;
-
-            transform: none !important;
-        }
 
 
         /* ================================================= */
@@ -385,6 +593,7 @@
 
                 grid-template-columns:
                     repeat(2, 1fr);
+
             }
 
         }
@@ -397,22 +606,41 @@
                 grid-template-columns: 1fr;
 
                 padding: 15px;
+
             }
 
 
             .foto-prodotto {
 
                 height: 300px;
+
+            }
+
+
+            .modal {
+
+                padding: 10px;
+
+            }
+
+
+            .modal-contenuto {
+
+                padding: 25px 20px;
+
             }
 
         }
+
 
     </style>
 
 </head>
 
 
+
 <body>
+
 
 
 <!-- ===================================================== -->
@@ -450,7 +678,7 @@
         <img
             class="foto-prodotto"
             src="Foto-1.png"
-            alt="Opera 1"
+            alt="Opera prova 1"
         >
 
 
@@ -493,65 +721,14 @@
             </div>
 
 
+            <button
+                class="pulsante-richiesta"
+                type="button"
+            >
 
-            <!-- ========================================= -->
-            <!-- CONTATTI                                   -->
-            <!-- ========================================= -->
+                RICHIEDI INFORMAZIONI
 
-            <div class="contatti">
-
-
-                <div class="titolo-contatti">
-
-                    RICHIEDI INFORMAZIONI
-
-                </div>
-
-
-                <!-- E-MAIL -->
-
-                <a
-                    class="pulsante-contatto email"
-                    href="#"
-                    data-contatto="email"
-                >
-
-                    📧 INVIA UNA E-MAIL
-
-                </a>
-
-
-                <!-- INSTAGRAM -->
-
-                <a
-                    class="pulsante-contatto instagram"
-                    href="#"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    data-contatto="instagram"
-                >
-
-                    📷 CONTATTAMI SU INSTAGRAM
-
-                </a>
-
-
-                <!-- TIKTOK -->
-
-                <a
-                    class="pulsante-contatto tiktok"
-                    href="#"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    data-contatto="tiktok"
-                >
-
-                    🎵 CONTATTAMI SU TIKTOK
-
-                </a>
-
-
-            </div>
+            </button>
 
 
         </div>
@@ -615,55 +792,14 @@
             </div>
 
 
+            <button
+                class="pulsante-richiesta"
+                type="button"
+            >
 
-            <div class="contatti">
+                RICHIEDI INFORMAZIONI
 
-
-                <div class="titolo-contatti">
-
-                    RICHIEDI INFORMAZIONI
-
-                </div>
-
-
-                <a
-                    class="pulsante-contatto email"
-                    href="#"
-                    data-contatto="email"
-                >
-
-                    📧 INVIA UNA E-MAIL
-
-                </a>
-
-
-                <a
-                    class="pulsante-contatto instagram"
-                    href="#"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    data-contatto="instagram"
-                >
-
-                    📷 CONTATTAMI SU INSTAGRAM
-
-                </a>
-
-
-                <a
-                    class="pulsante-contatto tiktok"
-                    href="#"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    data-contatto="tiktok"
-                >
-
-                    🎵 CONTATTAMI SU TIKTOK
-
-                </a>
-
-
-            </div>
+            </button>
 
 
         </div>
@@ -727,55 +863,14 @@
             </div>
 
 
+            <button
+                class="pulsante-richiesta"
+                type="button"
+            >
 
-            <div class="contatti">
+                RICHIEDI INFORMAZIONI
 
-
-                <div class="titolo-contatti">
-
-                    RICHIEDI INFORMAZIONI
-
-                </div>
-
-
-                <a
-                    class="pulsante-contatto email"
-                    href="#"
-                    data-contatto="email"
-                >
-
-                    📧 INVIA UNA E-MAIL
-
-                </a>
-
-
-                <a
-                    class="pulsante-contatto instagram"
-                    href="#"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    data-contatto="instagram"
-                >
-
-                    📷 CONTATTAMI SU INSTAGRAM
-
-                </a>
-
-
-                <a
-                    class="pulsante-contatto tiktok"
-                    href="#"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    data-contatto="tiktok"
-                >
-
-                    🎵 CONTATTAMI SU TIKTOK
-
-                </a>
-
-
-            </div>
+            </button>
 
 
         </div>
@@ -789,10 +884,121 @@
 
 
 <!-- ===================================================== -->
+<!-- MODALE                                               -->
+<!-- ===================================================== -->
+
+<div
+    id="modal"
+    class="modal"
+>
+
+
+    <div class="modal-contenuto">
+
+
+        <button
+            id="chiudiModal"
+            class="chiudi"
+            type="button"
+            aria-label="Chiudi"
+        >
+
+            ×
+
+        </button>
+
+
+
+        <h2>
+
+            RICHIEDI INFORMAZIONI
+
+        </h2>
+
+
+
+        <div
+            id="operaSelezionata"
+            class="opera-selezionata"
+        >
+
+            <div class="nome-opera">
+
+                Opera
+
+            </div>
+
+            <div class="prezzo-opera">
+
+                Prezzo
+
+            </div>
+
+        </div>
+
+
+
+        <div class="testo-contatto">
+
+            Per ricevere informazioni sull'opera
+            contattami direttamente attraverso
+            uno dei miei profili social.
+
+        </div>
+
+
+
+        <div class="social-modal">
+
+
+            <!-- ========================================= -->
+            <!-- INSTAGRAM                                 -->
+            <!-- ========================================= -->
+
+            <a
+                class="instagram"
+                href="https://www.instagram.com/TUOPROFILO"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+
+                📷 CONTATTAMI SU INSTAGRAM
+
+            </a>
+
+
+
+            <!-- ========================================= -->
+            <!-- TIKTOK                                    -->
+            <!-- ========================================= -->
+
+            <a
+                class="tiktok"
+                href="https://www.tiktok.com/@TUOPROFILO"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+
+                🎵 CONTATTAMI SU TIKTOK
+
+            </a>
+
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+
+<!-- ===================================================== -->
 <!-- JAVASCRIPT                                            -->
 <!-- ===================================================== -->
 
 <script>
+
 
 
 /*
@@ -802,161 +1008,240 @@
 */
 
 
-/*
- * DURATA DELLA DISPONIBILITÀ
- *
- * L'opera rimane disponibile per 30 giorni
- * a partire dalla data indicata in data-inizio.
- */
-
 const DURATA_GIORNI = 30;
 
 
 
 /*
 ===========================================================
- DATI DI CONTATTO
+ LINK SOCIAL
 ===========================================================
 */
 
 
 /*
- * INSERISCI QUI I TUOI DATI
- *
- * IMPORTANTE:
- *
- * 1. Sostituisci l'e-mail.
- *
- * 2. Sostituisci il link Instagram.
- *
- * 3. Sostituisci il link TikTok.
+ * SOSTITUISCI QUESTI DUE LINK
+ * CON I TUOI PROFILI.
  */
 
 
-const EMAIL = "TUAMAIL@ESEMPIO.IT";
-
-
-const INSTAGRAM =
+const LINK_INSTAGRAM =
     "https://www.instagram.com/TUOPROFILO";
 
 
-const TIKTOK =
+const LINK_TIKTOK =
     "https://www.tiktok.com/@TUOPROFILO";
 
 
 
 /*
 ===========================================================
- PREPARAZIONE DEI CONTATTI
+ ELEMENTI MODALE
 ===========================================================
 */
 
 
-function preparaContatti() {
+const modal =
+    document.getElementById(
+        "modal"
+    );
 
 
-    const prodotti =
-        document.querySelectorAll(".prodotto");
+const chiudiModal =
+    document.getElementById(
+        "chiudiModal"
+    );
 
 
-    prodotti.forEach(function(prodotto) {
+const operaSelezionata =
+    document.getElementById(
+        "operaSelezionata"
+    );
 
 
-        /*
-         * Recupera nome opera
-         */
 
-        const nomeOpera =
-            prodotto.querySelector("h2").innerText.trim();
-
-
-        /*
-         * Recupera prezzo
-         */
-
-        const prezzo =
-            prodotto.querySelector(".prezzo").innerText.trim();
+/*
+===========================================================
+ IMPOSTA LINK SOCIAL
+===========================================================
+*/
 
 
-        /*
-         * Recupera pulsanti
-         */
+document
+    .querySelector(
+        ".social-modal .instagram"
+    )
+    .href =
+        LINK_INSTAGRAM;
 
-        const pulsanteEmail =
-            prodotto.querySelector(
-                '[data-contatto="email"]'
+
+document
+    .querySelector(
+        ".social-modal .tiktok"
+    )
+    .href =
+        LINK_TIKTOK;
+
+
+
+/*
+===========================================================
+ APERTURA MODALE
+===========================================================
+*/
+
+
+document
+    .querySelectorAll(
+        ".pulsante-richiesta"
+    )
+    .forEach(
+        function(pulsante) {
+
+
+            pulsante.addEventListener(
+                "click",
+                function() {
+
+
+                    /*
+                     * Recupera prodotto
+                     */
+
+                    const prodotto =
+                        pulsante.closest(
+                            ".prodotto"
+                        );
+
+
+                    /*
+                     * Recupera nome
+                     */
+
+                    const nome =
+                        prodotto
+                            .querySelector("h2")
+                            .innerText
+                            .trim();
+
+
+                    /*
+                     * Recupera prezzo
+                     */
+
+                    const prezzo =
+                        prodotto
+                            .querySelector(".prezzo")
+                            .innerText
+                            .trim();
+
+
+                    /*
+                     * Mostra dati
+                     */
+
+                    operaSelezionata.innerHTML =
+
+                        '<div class="nome-opera">' +
+
+                        nome +
+
+                        '</div>' +
+
+                        '<div class="prezzo-opera">' +
+
+                        prezzo +
+
+                        '</div>';
+
+
+                    /*
+                     * Apri modale
+                     */
+
+                    modal.classList.add(
+                        "attivo"
+                    );
+
+                }
             );
 
+        }
+    );
 
-        const pulsanteInstagram =
-            prodotto.querySelector(
-                '[data-contatto="instagram"]'
+
+
+/*
+===========================================================
+ CHIUSURA MODALE
+===========================================================
+*/
+
+
+chiudiModal.addEventListener(
+    "click",
+    function() {
+
+        modal.classList.remove(
+            "attivo"
+        );
+
+    }
+);
+
+
+
+/*
+===========================================================
+ CHIUSURA CLICCANDO FUORI
+===========================================================
+*/
+
+
+modal.addEventListener(
+    "click",
+    function(event) {
+
+
+        if (
+            event.target === modal
+        ) {
+
+            modal.classList.remove(
+                "attivo"
             );
 
+        }
 
-        const pulsanteTikTok =
-            prodotto.querySelector(
-                '[data-contatto="tiktok"]'
+    }
+);
+
+
+
+/*
+===========================================================
+ CHIUSURA CON ESC
+===========================================================
+*/
+
+
+document.addEventListener(
+    "keydown",
+    function(event) {
+
+
+        if (
+            event.key === "Escape"
+        ) {
+
+            modal.classList.remove(
+                "attivo"
             );
 
+        }
 
-        /*
-         * ===============================================
-         * E-MAIL
-         * ===============================================
-         *
-         * Il messaggio viene creato automaticamente
-         * con nome dell'opera e prezzo.
-         */
-
-        const oggetto =
-            "Richiesta informazioni - " +
-            nomeOpera;
-
-
-        const messaggio =
-            "Buongiorno,%0D%0A%0D%0A" +
-            "sono interessato/a all'opera " +
-            nomeOpera +
-            " (" +
-            prezzo +
-            ").%0D%0A%0D%0A" +
-            "Vorrei ricevere maggiori informazioni " +
-            "per procedere all'acquisto.%0D%0A%0D%0A" +
-            "Grazie.";
-
-
-        pulsanteEmail.href =
-            "mailto:" +
-            EMAIL +
-            "?subject=" +
-            encodeURIComponent(oggetto) +
-            "&body=" +
-            messaggio;
-
-
-        /*
-         * ===============================================
-         * INSTAGRAM
-         * ===============================================
-         */
-
-        pulsanteInstagram.href =
-            INSTAGRAM;
-
-
-        /*
-         * ===============================================
-         * TIKTOK
-         * ===============================================
-         */
-
-        pulsanteTikTok.href =
-            TIKTOK;
-
-    });
-
-}
+    }
+);
 
 
 
@@ -971,343 +1256,389 @@ function aggiornaCatalogo() {
 
 
     const prodotti =
-        document.querySelectorAll(".prodotto");
+        document.querySelectorAll(
+            ".prodotto"
+        );
 
 
     const adesso =
         new Date();
 
 
-    prodotti.forEach(function(prodotto) {
+    prodotti.forEach(
+        function(prodotto) {
 
 
-        /*
-         * ===============================================
-         * DATI
-         * ===============================================
-         */
+            /*
+             * =========================================
+             * DATA INIZIO
+             * =========================================
+             */
 
-        const dataInizioStringa =
-            prodotto.dataset.inizio;
-
-
-        const dataInizio =
-            new Date(
-                dataInizioStringa +
-                "T00:00:00"
-            );
+            const dataInizioStringa =
+                prodotto.dataset.inizio;
 
 
-        /*
-         * ===============================================
-         * GIORNO 0
-         * ===============================================
-         */
-
-        const inizioGiornoZero =
-            new Date(dataInizio);
+            const dataInizio =
+                new Date(
+                    dataInizioStringa +
+                    "T00:00:00"
+                );
 
 
-        inizioGiornoZero.setDate(
-            inizioGiornoZero.getDate() +
-            DURATA_GIORNI
-        );
+
+            /*
+             * =========================================
+             * GIORNO 0
+             * =========================================
+             */
+
+            const inizioGiornoZero =
+                new Date(
+                    dataInizio
+                );
 
 
-        /*
-         * Fine del giorno 0
-         */
-
-        const fineGiornoZero =
-            new Date(inizioGiornoZero);
-
-
-        fineGiornoZero.setDate(
-            fineGiornoZero.getDate() + 1
-        );
-
-
-        /*
-         * ===============================================
-         * ELEMENTI
-         * ===============================================
-         */
-
-        const timer =
-            prodotto.querySelector(".timer");
-
-
-        const pulsanti =
-            prodotto.querySelectorAll(
-                ".pulsante-contatto"
+            inizioGiornoZero.setDate(
+                inizioGiornoZero.getDate() +
+                DURATA_GIORNI
             );
 
 
 
-        /*
-         * ===============================================
-         * PRIMA DELLA DATA DI INIZIO
-         * ===============================================
-         */
+            /*
+             * =========================================
+             * FINE GIORNO 0
+             * =========================================
+             */
 
-        if (adesso < dataInizio) {
+            const fineGiornoZero =
+                new Date(
+                    inizioGiornoZero
+                );
 
+
+            fineGiornoZero.setDate(
+                fineGiornoZero.getDate() +
+                1
+            );
+
+
+
+            /*
+             * =========================================
+             * ELEMENTI
+             * =========================================
+             */
+
+            const timer =
+                prodotto.querySelector(
+                    ".timer"
+                );
+
+
+            const pulsante =
+                prodotto.querySelector(
+                    ".pulsante-richiesta"
+                );
+
+
+
+            /*
+             * =========================================
+             * PRIMA DELLA DATA
+             * =========================================
+             */
+
+            if (
+                adesso < dataInizio
+            ) {
+
+
+                const differenza =
+                    dataInizio.getTime() -
+                    adesso.getTime();
+
+
+                const giorni =
+                    Math.ceil(
+                        differenza /
+                        (
+                            1000 *
+                            60 *
+                            60 *
+                            24
+                        )
+                    );
+
+
+                timer.innerHTML =
+
+                    "NON ANCORA DISPONIBILE<br>" +
+
+                    "Disponibile tra " +
+
+                    giorni +
+
+                    " giorni";
+
+
+                timer.classList.add(
+                    "non-disponibile"
+                );
+
+
+                timer.classList.remove(
+                    "giorno-zero"
+                );
+
+
+                timer.classList.remove(
+                    "scaduto"
+                );
+
+
+                pulsante.classList.add(
+                    "disabilitato"
+                );
+
+
+                return;
+
+            }
+
+
+
+            /*
+             * =========================================
+             * DOPO LA SCADENZA
+             * =========================================
+             */
+
+            if (
+                adesso >= fineGiornoZero
+            ) {
+
+
+                timer.innerHTML =
+                    "⛔ DISPONIBILITÀ TERMINATA";
+
+
+                timer.classList.remove(
+                    "giorno-zero"
+                );
+
+
+                timer.classList.remove(
+                    "non-disponibile"
+                );
+
+
+                timer.classList.add(
+                    "scaduto"
+                );
+
+
+                pulsante.classList.add(
+                    "disabilitato"
+                );
+
+
+                return;
+
+            }
+
+
+
+            /*
+             * =========================================
+             * CALCOLO DEL GIORNO
+             * =========================================
+             */
+
+            const differenzaInizio =
+                adesso.getTime() -
+                dataInizio.getTime();
+
+
+            const giorniTrascorsi =
+                Math.floor(
+                    differenzaInizio /
+                    (
+                        1000 *
+                        60 *
+                        60 *
+                        24
+                    )
+                );
+
+
+            let giorno =
+                DURATA_GIORNI -
+                giorniTrascorsi;
+
+
+            if (
+                giorno < 0
+            ) {
+
+                giorno = 0;
+
+            }
+
+
+
+            /*
+             * =========================================
+             * TEMPO RIMANENTE
+             * =========================================
+             */
 
             const differenza =
-                dataInizio.getTime() -
+                fineGiornoZero.getTime() -
                 adesso.getTime();
 
 
-            const giorni =
-                Math.ceil(
-                    differenza /
-                    (1000 * 60 * 60 * 24)
+            const ore =
+                Math.floor(
+                    (
+                        differenza /
+                        (
+                            1000 *
+                            60 *
+                            60
+                        )
+                    ) % 24
                 );
 
 
-            timer.innerHTML =
-                "NON ANCORA DISPONIBILE<br>" +
-                "Disponibile tra " +
-                giorni +
-                " giorni";
+            const minuti =
+                Math.floor(
+                    (
+                        differenza /
+                        (
+                            1000 *
+                            60
+                        )
+                    ) % 60
+                );
 
 
-            timer.classList.add(
-                "non-disponibile"
-            );
+            const secondi =
+                Math.floor(
+                    (
+                        differenza /
+                        1000
+                    ) % 60
+                );
 
-
-            timer.classList.remove(
-                "giorno-zero"
-            );
-
-
-            timer.classList.remove(
-                "scaduto"
-            );
 
 
             /*
-             * Disabilita tutti i contatti
+             * =========================================
+             * GIORNO 0
+             * =========================================
              */
 
-            pulsanti.forEach(function(pulsante) {
+            if (
+                giorno === 0
+            ) {
 
-                pulsante.classList.add(
-                    "disabilitato"
+
+                timer.classList.add(
+                    "giorno-zero"
                 );
 
-            });
+
+                timer.classList.remove(
+                    "scaduto"
+                );
 
 
-            return;
-
-        }
-
-
-
-        /*
-         * ===============================================
-         * DOPO LA SCADENZA
-         * ===============================================
-         */
-
-        if (adesso >= fineGiornoZero) {
+                timer.classList.remove(
+                    "non-disponibile"
+                );
 
 
-            timer.innerHTML =
-                "⛔ DISPONIBILITÀ TERMINATA";
+                timer.innerHTML =
 
+                    "⚠️ GIORNO 0<br>" +
 
-            timer.classList.remove(
-                "giorno-zero"
-            );
+                    ore +
 
+                    " ore " +
 
-            timer.classList.remove(
-                "non-disponibile"
-            );
+                    minuti +
 
+                    " minuti " +
 
-            timer.classList.add(
-                "scaduto"
-            );
+                    secondi +
+
+                    " secondi";
+
+            }
 
 
             /*
-             * Disabilita tutti i contatti
+             * =========================================
+             * GIORNI NORMALI
+             * =========================================
              */
 
-            pulsanti.forEach(function(pulsante) {
+            else {
 
-                pulsante.classList.add(
-                    "disabilitato"
+
+                timer.classList.remove(
+                    "giorno-zero"
                 );
 
-            });
+
+                timer.classList.remove(
+                    "scaduto"
+                );
 
 
-            return;
-
-        }
-
-
-
-        /*
-         * ===============================================
-         * CALCOLO DEL GIORNO
-         * ===============================================
-         */
-
-        const differenzaInizio =
-            adesso.getTime() -
-            dataInizio.getTime();
+                timer.classList.remove(
+                    "non-disponibile"
+                );
 
 
-        const giorniTrascorsi =
-            Math.floor(
-                differenzaInizio /
-                (1000 * 60 * 60 * 24)
-            );
+                timer.innerHTML =
 
+                    "GIORNO " +
 
-        let giorno =
-            DURATA_GIORNI -
-            giorniTrascorsi;
+                    giorno +
 
+                    "<br>" +
 
-        if (giorno < 0) {
+                    ore +
 
-            giorno = 0;
+                    " ore " +
 
-        }
+                    minuti +
+
+                    " minuti " +
+
+                    secondi +
+
+                    " secondi";
+
+            }
 
 
 
-        /*
-         * ===============================================
-         * TEMPO RIMANENTE
-         * ===============================================
-         */
-
-        const differenza =
-            fineGiornoZero.getTime() -
-            adesso.getTime();
-
-
-        const ore =
-            Math.floor(
-                (differenza /
-                (1000 * 60 * 60)) % 24
-            );
-
-
-        const minuti =
-            Math.floor(
-                (differenza /
-                (1000 * 60)) % 60
-            );
-
-
-        const secondi =
-            Math.floor(
-                (differenza /
-                1000) % 60
-            );
-
-
-
-        /*
-         * ===============================================
-         * GIORNO 0
-         * ===============================================
-         */
-
-        if (giorno === 0) {
-
-
-            timer.classList.add(
-                "giorno-zero"
-            );
-
-
-            timer.classList.remove(
-                "scaduto"
-            );
-
-
-            timer.classList.remove(
-                "non-disponibile"
-            );
-
-
-            timer.innerHTML =
-                "⚠️ GIORNO 0<br>" +
-                ore +
-                " ore " +
-                minuti +
-                " minuti " +
-                secondi +
-                " secondi";
-
-
-        }
-
-
-        /*
-         * ===============================================
-         * GIORNI NORMALI
-         * ===============================================
-         */
-
-        else {
-
-
-            timer.classList.remove(
-                "giorno-zero"
-            );
-
-
-            timer.classList.remove(
-                "scaduto"
-            );
-
-
-            timer.classList.remove(
-                "non-disponibile"
-            );
-
-
-            timer.innerHTML =
-                "GIORNO " +
-                giorno +
-                "<br>" +
-                ore +
-                " ore " +
-                minuti +
-                " minuti " +
-                secondi +
-                " secondi";
-
-        }
-
-
-
-        /*
-         * ===============================================
-         * CONTATTI ATTIVI
-         * ===============================================
-         */
-
-        pulsanti.forEach(function(pulsante) {
+            /*
+             * =========================================
+             * PULSANTE ATTIVO
+             * =========================================
+             */
 
             pulsante.classList.remove(
                 "disabilitato"
             );
 
-        });
-
-    });
+        }
+    );
 
 }
 
@@ -1320,23 +1651,11 @@ function aggiornaCatalogo() {
 */
 
 
-/*
- * Prepara i link e-mail,
- * Instagram e TikTok.
- */
-
-preparaContatti();
-
-
-/*
- * Aggiorna immediatamente il catalogo.
- */
-
 aggiornaCatalogo();
 
 
 /*
- * Aggiorna il timer ogni secondo.
+ * Aggiornamento ogni secondo
  */
 
 setInterval(
@@ -1346,6 +1665,7 @@ setInterval(
 
 
 </script>
+
 
 
 </body>
