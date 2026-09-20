@@ -1665,9 +1665,131 @@ setInterval(
     1000
 );
 
+setInterval(
+    aggiornaCatalogo,
+    1000
+);
+
+
+
+/*
+===========================================================
+ ZOOM FOTO
+===========================================================
+*/
+
+const zoomFoto =
+    document.getElementById(
+        "zoomFoto"
+    );
+
+
+const immagineZoom =
+    document.getElementById(
+        "immagineZoom"
+    );
+
+
+const chiudiZoom =
+    document.getElementById(
+        "chiudiZoom"
+    );
+
+
+
+/*
+ * CLIC SULLE FOTO
+ */
+
+document
+    .querySelectorAll(
+        ".foto-prodotto"
+    )
+    .forEach(
+        function(foto) {
+
+            foto.addEventListener(
+                "click",
+                function() {
+
+                    immagineZoom.src =
+                        foto.src;
+
+                    zoomFoto.classList.add(
+                        "attivo"
+                    );
+
+                }
+            );
+
+        }
+    );
+
+
+
+/*
+ * CHIUDI CON LA X
+ */
+
+chiudiZoom.addEventListener(
+    "click",
+    function() {
+
+        zoomFoto.classList.remove(
+            "attivo"
+        );
+
+    }
+);
+
+
+
+/*
+ * CHIUDI CLICCANDO FUORI DALLA FOTO
+ */
+
+zoomFoto.addEventListener(
+    "click",
+    function(event) {
+
+        if (
+            event.target === zoomFoto
+        ) {
+
+            zoomFoto.classList.remove(
+                "attivo"
+            );
+
+        }
+
+    }
+);
+
+
+
+/*
+ * CHIUDI CON ESC
+ */
+
+document.addEventListener(
+    "keydown",
+    function(event) {
+
+        if (
+            event.key === "Escape"
+        ) {
+
+            zoomFoto.classList.remove(
+                "attivo"
+            );
+
+        }
+
+    }
+);
+
 
 </script>
-
 
 
 </body>
