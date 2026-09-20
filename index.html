@@ -589,16 +589,17 @@
         /* RESPONSIVE                                         */
         /* ================================================= */
 
-        @media (max-width: 900px) {
+@media (max-width: 900px) {
 
-            .catalogo {
+    .catalogo {
 
-                grid-template-columns:
-                    repeat(2, 1fr);
+        grid-template-columns:
+            repeat(2, 1fr);
 
-            }
+    }
 
-        }
+}
+
 
 @media (max-width: 600px) {
 
@@ -625,16 +626,6 @@
     }
 
 }
-
-
-            .modal-contenuto {
-
-                padding: 25px 20px;
-
-            }
-
-        }
-
 
     </style>
 
@@ -888,7 +879,34 @@
 
 </main>
 
+<!-- ===================================================== -->
+<!-- ZOOM FOTO                                             -->
+<!-- ===================================================== -->
 
+<div
+    id="zoomFoto"
+    class="zoom-foto"
+>
+
+    <button
+        id="chiudiZoom"
+        class="chiudi-zoom"
+        type="button"
+        aria-label="Chiudi immagine"
+    >
+
+        ×
+
+    </button>
+
+
+    <img
+        id="immagineZoom"
+        src=""
+        alt="Opera ingrandita"
+    >
+
+</div>
 
 <!-- ===================================================== -->
 <!-- MODALE                                               -->
